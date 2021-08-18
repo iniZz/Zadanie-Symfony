@@ -8,27 +8,23 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 {% include "inc/menu.html.twig" %}
-<div class="count">
-    {{ pagination.getTotalItemCount }}
-</div>
+
 <table>
     <tr>
-        {# sorting of properties based on query components #}
-        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
-        <th{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>
-            {{ knp_pagination_sortable(pagination, 'Title', 'a.title') }}
-        </th>
+        <th>ID</th>
+        <th> Username</th>
+        <th> Action</th>
     </tr>
 
-    {# table body #}
-    {% for article in pagination %}
+    {% for users in pagination %}
         <tr {% if loop.index is odd %}class="color"{% endif %}>
-            <td>{{ article.id }}</td>
-            <td>{{ article.username }}</td>
+            <td>{{ users.id }}</td>
+            <td>{{ users.username }}</td>
+            <td>{% if users.disabled %}<a href="{{ path('user_enable', {'userID': users.id, 'pagination':pagination.currentPageNumber }) }}">DISABLED</a>{% else %}<a href="{{ path('user_disable', {'userID': users.id, 'pagination':pagination.currentPageNumber }) }}">ENABLED</a>{% endif %}</td>
+            
         </tr>
     {% endfor %}
 </table>
-{# display navigation #}
 <div class="navigation">
     {{ knp_pagination_render(pagination) }}
 </div>
