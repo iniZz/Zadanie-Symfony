@@ -16,7 +16,6 @@ class SecurityController extends AbstractController
     {
         
         if ($this->getUser()) {
-            // dd($this->getUser()->getDisabled());
             
             return $this->redirectToRoute('index');
         }

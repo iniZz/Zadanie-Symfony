@@ -54,10 +54,10 @@ class IndexController extends AbstractController
     /**
      * @Route("/user/list/{page}", name="user_list", methods={"GET"})
      */
-    public function list(int $page): Response
+    public function list(int $page = 1): Response
     {
         $articles = $this->userRepository->findAll();
-        $pagination = $this->userPaginator->paginate($articles, $page, /*page number*/3/*limit per page*/);
+        $pagination = $this->userPaginator->paginate($articles, $page, /*page number*/10/*limit per page*/);
         // dd($pagination);
         return $this->render(
             'index/list.html.twig',
