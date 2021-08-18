@@ -24,13 +24,7 @@ class UserChecker implements UserCheckerInterface
 
     public function checkPostAuth(UserInterface $user): void
     {
-        if (!$user instanceof AppUser) {
             return;
-        }
 
-        // user account is expired, the user may be notified
-        if ($user->isExpired()) {
-            throw new AccountExpiredException('...');
-        }
     }
 }
