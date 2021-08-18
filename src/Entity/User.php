@@ -38,6 +38,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $disabled;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -98,6 +103,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getDisabled(): bool
+    {
+        return $this->disabled;
+    }
+
+    public function setDisabled(string $disabled): self
+    {
+        $this->disabled = $disabled;
 
         return $this;
     }
