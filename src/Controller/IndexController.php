@@ -4,41 +4,31 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
-use App\Entity\User;
-use App\Repository\UserRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\UserService;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-use Doctrine\ORM\EntityManagerInterface;
 
 class IndexController extends AbstractController
 {
 
     /**
-     * @var UserRepository
+     * @var UserService
      */
-    private $userRepository;
+    private $userService;
 
-    /**
-     * @var PaginatorInterface
-     */
-    private $userPaginator;
 
 
     /**
-     * @param UserRepository  $userRepository
-     * @param PaginatorInterface  $userPaginator
+     * @param UserService  $userService
      */
     public function __construct(
-        UserRepository $userRepository,
-        PaginatorInterface $userPaginator
+        UserService $userService
     ) {
-        $this->userRepository = $userRepository;
-        $this->userPaginator = $userPaginator;
+        $this->userService = $userService;
     }
 
     /**
@@ -56,9 +46,7 @@ class IndexController extends AbstractController
      */
     public function list(int $page = 1): Response
     {
-        $articles = $this->userRepository->findAll();
-        $pagination = $this->userPaginator->paginate($articles, $page, /*page number*/10/*limit per page*/);
-        // dd($pagination);
+        $pagination = $this->userService->pagginatrion($page);
         return $this->render(
             'index/list.html.twig',
             ['pagination' => $pagination]
@@ -70,13 +58,11 @@ class IndexController extends AbstractController
     * @Route("/{userID}/{pagination}/disable", name="user_disable")
     *
     */
-    public function disableUserAction(int $userID, int $pagination, EntityManagerInterface $em)
+    public function disableUserAction(int $userID, int $pagination)
     {
-        $user = $this->userRepository->findOneBy(array('id' => $userID),array('id' => 'ASC'));
-        $user->setDisabled(true);
-        $em->flush();
+        $this->userService->disableUser($userID);
+        
         return $this->redirectToRoute('user_list', ['page' => $pagination]);
-        // dd( $user);
     }
 
     /**
@@ -84,12 +70,10 @@ class IndexController extends AbstractController
     * @Route("/{userID}/{pagination}/enable", requirements={"id" = "\d+"}, name="user_enable")
     *
     */
-    public function enableUserAction(int $userID, int $pagination, EntityManagerInterface $em)
+    public function enableUserAction(int $userID, int $pagination)
     {
-        $user = $this->userRepository->findOneBy(array('id' => $userID),array('id' => 'ASC'));
-        $user->setDisabled(false);
-        $em->flush();
+        $this->userService->enableUser($userID);
+        
         return $this->redirectToRoute('user_list', ['page' => $pagination]);
-        // dd( $user);
     }
 }

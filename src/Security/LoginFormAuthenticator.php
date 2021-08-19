@@ -2,6 +2,8 @@
 
 namespace App\Security;
 
+
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,10 +25,12 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     public const LOGIN_ROUTE = 'app_login';
 
     private UrlGeneratorInterface $urlGenerator;
+    private Security $security;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    public function __construct(UrlGeneratorInterface $urlGenerator, Security $security)
     {
         $this->urlGenerator = $urlGenerator;
+        $this->security = $security;
     }
 
     public function authenticate(Request $request): PassportInterface
@@ -49,9 +53,13 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
+        // dd($this->security->getUser()->getRoles()[0]);
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('user_list'));
+        if ($this->security->getUser()->getRoles()[0] == "ROLE_USER") {
+            return new RedirectResponse($this->urlGenerator->generate('index'));
+        }else{
+            return new RedirectResponse($this->urlGenerator->generate('user_list'));
+        }
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

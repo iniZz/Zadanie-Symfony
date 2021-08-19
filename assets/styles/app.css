@@ -1,3 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body {
-    background-color: rgb(116, 107, 107);
+    /* background: linear-gradient(-90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(90deg, #1268ca, #00f261);
+    background-size: 500% 500%;
+    animation: gradient 15s ease infinite;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    position: relative;
+}
+
+.row {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.form {
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+h3, h1 {
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+label, input, textarea {
+    display: block;
+    width: 100%;
+    font-size: 12pt;
+    line-height: 12pt * 2;
+    font-family: 12pt;
+}
+
+select {
+    margin-bottom: 12pt * 2;
+    height: 35px;
+    width: 80px;
+    color: #fff;
+}
+
+input {
+    margin-bottom: 12pt * 2;
+    height: 35px;
+    color: #fff;
+}
+
+textarea {
+    margin-bottom: 12pt * 2;
+    height: 100px;
+    color: #fff;
+    line-height: 19px;
+}
+
+.input-container {
+    padding: 1px 0px 79px;
+}
+
+label {
+    margin-top: 20px;
+    font-size: 16pt;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+input, textarea, select {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    background: #00272bcc;
+    padding-left: 5px;
+    outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    border: 1px solid #6bd4b1;
+}
+
+textarea {
+    resize: vertical;
+}
+
+textarea::before {
+    margin-bottom: 20px;
+}
+
+textarea::after {
+    margin-bottom: 20px;
+}
+
+button {
+    margin-left: 15px;
+    margin-top: 10px;
+    display: block;
+    float: right;
+    line-height: 12pt * 2;
+    padding: 17px 80px;
+    border: none;
+    background: #0039b3;
+    color: white;
+    width: 100%;
+    border-radius: 10px;
+}
+
+button:hover {
+    background: inherit;
+    color: #ffffff;
+    background: #0a44c2;
+    border-bottom: 2px solid #012470;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus {
+    border: 1px solid #6bd4b1;
+    -webkit-text-fill-color: #2A293E;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+form ul {
+    color: #ea0000;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+table.products-table {
+    border-collapse: separate;
+    border-radius: 10px;
+    border-spacing: 0;
+    box-shadow: 0 0 25px #aaa;
+    margin: 4rem 0;
+    width: 100%;
+}
+
+th {
+    background-color: #fff;
+    font-weight: bold;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+th, td {
+    line-height: 1.5;
+    padding: 0.75em;
+    text-align: center;
+}
+
+td {
+    background-color: white;
+}
+
+tbody tr:nth-child(odd) td {
+    background-color: #f6f6f6;
+}
+
+thead th:first-child {
+    border-top-left-radius: 10px;
+    text-align: left;
+}
+
+thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.navigation ul {}
+
+.navigation li {
+    float: left;
+    list-style: none;
+    text-align: center;
+    background-color: #000000;
+    margin-right: 3px;
+    width: 50px;
+    line-height: 60px;
+}
+
+.navigation li:first-child {
+    width: 80px;
+}
+
+.navigation li:last-child {
+    width: 60px;
+}
+
+.navigation li a {
+    text-decoration: none;
+    display: block;
+    color: #FFFFFF;
+}
+
+.navigation li a:hover {
+    text-decoration: none;
+    color: #000000;
+    background-color: #33B5E5;
+}
+
+.navigation ul .active {
+    color: #33B5E5;
+}
+
+.navigation ul .disabled {
+    color: #9e9e9e;
+}
+
+.products-table a {
+    text-decoration: none;
+    color: white;
+    padding: 0.35em;
+    border-radius: 9px;
+}
+
+.usDisabled {
+    background-color: rgb(202, 0, 0);
+}
+
+.usEnabled {
+    background-color: green;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 100%;
+    background-color: rgb(146, 146, 146);
+    color: rgb(228, 228, 228);
+}
+
+.menu a {
+    padding: 0.30em;
+    border-radius: 8px;
+    text-decoration: none;
+    line-height: 33px;
+    margin-left: 15px;
+    color: white;
+}
+
+.menu a:last-child {
+    margin-left: 0px;
 }
