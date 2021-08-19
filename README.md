@@ -13,7 +13,7 @@
   2) Wypakowanie zadania do wybranego folderu.
   3) Uruchomienie w folderze z projektem komendy 
   ```
-  composer update
+  composer install
   ```
   4) Ustawienie połączenia z bazą danych w pliku **.env** przykład:
   ```
