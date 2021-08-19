@@ -1,12 +1,12 @@
 # Zadanie-Symfony
-##Wymagania:
+## Wymagania:
   php7+ Link do pogrania: https://www.php.net/downloads.php
   composer. Link do pobrania: https://getcomposer.org/download/
   Symfony. Link do pobrania: https://symfony.com/download
   
   Nodejs lub Yarn.
   
- ##Proces instalacji.
+ ## Proces instalacji.
   1) Probranie repozytorium z zadaniem manualnie bądź przez komendę pull
   2) Wypakowanie zadania do wybranego folderu.
   3) Uruchomienie komendy 
