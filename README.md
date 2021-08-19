@@ -34,16 +34,31 @@
   ```
   7) Instalacja modółu nodejs lub yarn:
   ```
-  NODEJS:  npm install
+  NODEJS: npm install
   YARN: yarn install
   ```
   8) Build plików css i js:
   ```
-  encore production --progress
+  NODEJS: npm run build
+  YARN: yarn encore production
   ```
   9) utworzenie chache strony:
   ```
   php bin/console cache:warmup
   ```
+  10) Uruchomienie lokalnego serwera symfony:
+  ```
+  symfony serve
+  ```
+  
+  ## Logowanie:
+    Administrator:
+      Login: administrator Hasło: admin
+      
+    Urzytkownicy:
+      Login: test1 Hasło: test
+        Dostępnych kont jest więcej różnica to cyfra w loginie, dostępne cyfry od 1 do 39
+      
+  ## [DEMO STRONY](zadanie.smorczewski.pl)
   
   
